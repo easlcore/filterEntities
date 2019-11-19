@@ -84,36 +84,30 @@ console.log({ filteredEntities, filter });
 
 ```javascript
 const filter = {
-  id: ['Apple MacBook Pro 15.4" 2019'],
-  inch: [15.4],
-  memory: [8, 32],
-  model: ['MacBook Pro'],
-  processor: ['i7', 'i9'],
-  storage: [512, 256],
-  touchBar: [true],
-  year: [2019],
+  id: [ 'Apple MacBook Pro 16" 2019',
+    'Apple MacBook 12" 2019',
+    'Apple MacBook Pro 13" 2016',
+    'Apple MacBook Air 13" 2017'
+  ],
+  inch: [ 16, 12, 13 ],
+  memory: [ 16 ],
+  model: [ 'MacBook', 'MacBook Air' ],
+  processor: [ 'i5' ],
+  storage: [ 128, 1024 ],
+  touchBar: [ false ],
+  year: [ 2016, 2017 ]
 };
 
 const filteredEntities = [
   {
     id: 'Apple MacBook Pro 15.4" 2019',
-    inch: 15.4,
-    memory: 8,
     model: 'MacBook Pro',
+    inch: 15.4,
     processor: 'i7',
-    storage: 512,
-    touchBar: true,
+    memory: 8,
     year: 2019,
-  },
-  {
-    id: 'Apple MacBook Pro 15.4" 2019',
-    inch: 15.4,
-    memory: 32,
-    model: 'MacBook Pro',
-    processor: 'i9',
-    storage: 256,
     touchBar: true,
-    year: 2019,
+    storage: 512
   }
 ];
 ```
@@ -122,17 +116,30 @@ const filteredEntities = [
 ```javascript
 const selectedProperties = {};
 
-const filter = {
-  id: ['Apple MacBook Pro 15.4" 2019', 'Apple MacBook 12" 2019', 'Apple MacBook Pro 13" 2016', 'Apple MacBook Air 13" 2017'],
-  inch: [15.4, 12, 13],
-  memory: [8, 32, 16],
-  model: ['MacBook Pro', 'MacBook', 'MacBook Air'],
-  processor: ['i7', 'i9', 'i5'],
-  storage: [512, 256, 128, 1024],
-  touchBar: [true, false],
-  year: [2019, 2016, 2017],
+const filter ={
+  id: [ 'Apple MacBook Pro 15.4" 2019',
+    'Apple MacBook Pro 16" 2019',
+    'Apple MacBook 12" 2019',
+    'Apple MacBook Pro 13" 2016',
+    'Apple MacBook Air 13" 2017'
+  ],
+  model: [ 'MacBook Pro', 'MacBook', 'MacBook Air' ],
+  inch: [ 15.4, 16, 12, 13 ],
+  processor: [ 'i7', 'i9', 'i5' ],
+  memory: [ 8, 32, 16 ],
+  year: [ 2019, 2016, 2017 ],
+  touchBar: [ true, false ],
+  storage: [ 512, 256, 128, 1024 ]
 };
 
 const filteredEntities =  // эквивалентный список entities
 
 ```
+
+# Запуск
+
+``` npm run start ```
+
+# Тесты
+
+``` npm run test ```
