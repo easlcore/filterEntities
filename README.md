@@ -5,7 +5,6 @@
 Условия:
 * ES6
 * Unit Тесты
-* UI - опционально (reactjs, js/ts)
 
 Пример списка товаров:
 
@@ -80,34 +79,49 @@ console.log({ filteredEntities, filter });
 ```
 
 
+# ВАЖНО!
+В итоговый список отфильтрованных товаров попадают только те товары, для которых подходит хотя бы 1 значение из каждого поля selectedProperties.
+Т.е. под фильтр
+
+```javascript
+  const selectedProperties = {
+    inch: [13, 15.4],
+    storage: [128],
+    touchBar: [false],
+  };
+``` 
+попадут товары у которых диагональ 13 ИЛИ 15.4, И storage 128, И touchBar false
+
+
 Результат для выбранных параметров среди имеющихся товаров будет такой:
 
 ```javascript
-const filter = {
-  id: [ 'Apple MacBook Pro 16" 2019',
+const availableFilters = {
+  id: [ 'Apple MacBook Pro 15.4" 2019',
+    'Apple MacBook Pro 16" 2019',
     'Apple MacBook 12" 2019',
     'Apple MacBook Pro 13" 2016',
     'Apple MacBook Air 13" 2017'
   ],
-  inch: [ 16, 12, 13 ],
-  memory: [ 16 ],
-  model: [ 'MacBook', 'MacBook Air' ],
-  processor: [ 'i5' ],
-  storage: [ 128, 1024 ],
-  touchBar: [ false ],
-  year: [ 2016, 2017 ]
+  model: [ 'MacBook Pro', 'MacBook', 'MacBook Air'],
+  inch: [ 16, 12 ],
+  processor: [ 'i7', 'i9', 'i5' ],
+  memory: [ 8, 32, 16 ],
+  year: [ 2019, 2016, 2017 ],
+  touchBar: [ true ],
+  storage: [ 512, 256, 1024 ]
 };
 
 const filteredEntities = [
   {
-    id: 'Apple MacBook Pro 15.4" 2019',
+    id: 'Apple MacBook Pro 13" 2016',
     model: 'MacBook Pro',
-    inch: 15.4,
-    processor: 'i7',
+    inch: 13,
+    processor: 'i5',
     memory: 8,
-    year: 2019,
-    touchBar: true,
-    storage: 512
+    year: 2016,
+    touchBar: false,
+    storage: 128
   }
 ];
 ```
@@ -116,7 +130,7 @@ const filteredEntities = [
 ```javascript
 const selectedProperties = {};
 
-const filter ={
+const availableFilters ={
   id: [ 'Apple MacBook Pro 15.4" 2019',
     'Apple MacBook Pro 16" 2019',
     'Apple MacBook 12" 2019',
@@ -132,7 +146,7 @@ const filter ={
   storage: [ 512, 256, 128, 1024 ]
 };
 
-const filteredEntities =  // эквивалентный список entities
+const filteredEntities =  // исходный список entities
 
 ```
 

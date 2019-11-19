@@ -23,8 +23,8 @@ module.exports.getAvailableFilters = (entities, selectedFilter) => {
 
     const availableFilters = {}
 
-    for (const key in selectedFilter) {
-      availableFilters[key] = allPossibleFilters[key].filter(val => !selectedFilter[key].some(v => v === val));
+    for (const key in allPossibleFilters) {
+      availableFilters[key] = allPossibleFilters[key].filter(val => selectedFilter[key] ? !selectedFilter[key].some(v => v === val) : val);
     }
 
     return availableFilters;

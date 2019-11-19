@@ -41,9 +41,19 @@ const mockFilteredEntities = [
 ];
 
 const expectedFilter = {
+  id: [ 'Apple MacBook Pro 15.4" 2019',
+    'Apple MacBook Pro 16" 2019',
+    'Apple MacBook 12" 2019',
+    'Apple MacBook Pro 13" 2016',
+    'Apple MacBook Air 13" 2017'
+  ],
+  model: [ 'MacBook Pro', 'MacBook', 'MacBook Air'],
   inch: [ 16, 12 ],
-  storage: [ 512, 256, 1024 ],
-  touchBar: [ true ]
+  processor: [ 'i7', 'i9', 'i5' ],
+  memory: [ 8, 32, 16 ],
+  year: [ 2019, 2016, 2017 ],
+  touchBar: [ true ],
+  storage: [ 512, 256, 1024 ]
 };
 
 describe('Filter entities', () => {
